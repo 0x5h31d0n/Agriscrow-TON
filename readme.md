@@ -73,8 +73,8 @@ Agriscrow is a blockchain-powered platform that connects farmers, buyers, and eq
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/agriscrow.git
-cd agriscrow
+git clone https://github.com/0x5h31d0n/Agriscrow-TON.git
+cd Agriscrow-TON
 ```
 
 2. Install Frontend dependencies:
@@ -89,21 +89,7 @@ cd backend
 pip install -r requirements.txt
 ```
 
-4. Configure environment variables:
-
-Create `.env` files in both Frontend and backend directories:
-
-```env
-# Frontend/.env
-VITE_API_URL=http://localhost:5000
-VITE_TON_NETWORK=testnet
-
-# backend/.env
-FLASK_APP=app.py
-FLASK_ENV=development
-```
-
-5. Start the development servers:
+4. Start the development servers:
 
 Frontend:
 ```bash
@@ -196,14 +182,6 @@ npm run build
 2. Configure environment variables for production
 3. Deploy using your preferred deployment method
 
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
 ## Code Style
 
 - Frontend follows TypeScript and ESLint standards
@@ -224,7 +202,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-Project Link: [https://github.com/yourusername/agriscrow](https://github.com/yourusername/agriscrow)
+Project Link: [https://github.com/0x5h31d0n/Agriscrow-TON](https://github.com/0x5h31d0n/Agriscrow-TON)
 
 ## Acknowledgments
 
