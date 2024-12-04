@@ -2,7 +2,7 @@
 
 Agriscrow is a blockchain-powered platform that connects farmers, buyers, and equipment owners in a secure and transparent agricultural ecosystem. Built on the TON blockchain, it enables direct trading, equipment rental, and secure transactions through smart contracts.
 
-![Agriscrow Platform](screenshot.png)
+![Agriscrow Platform](1.jpg)
 
 ## Features
 
@@ -196,19 +196,14 @@ npm run build
 - Input validation on both frontend and backend
 - Secure wallet integration
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Contact
 
 Project Link: [https://github.com/0x5h31d0n/Agriscrow-TON](https://github.com/0x5h31d0n/Agriscrow-TON)
 
 ## Acknowledgments
 
-- TON Blockchain team
+- TON Society India
 - TonConnect team
-- Community contributors
 - All open-source libraries used in this project
 
 ---
