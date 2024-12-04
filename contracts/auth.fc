@@ -1,0 +1,64 @@
+#include "stdlib.fc";
+
+;; Storage structure
+(slice, cell) load_data() inline {
+    var ds = get_data().begin_parse();
+    return (
+        ds~load_msg_addr(), ;; owner address
+        ds~load_dict()      ;; users dictionary
+    );
+}
+
+;; User structure
+;; name, email, password_hash, role, is_registered
+(slice, slice, slice, slice, int) load_user(slice addr) inline {
+    var (_, users) = load_data();
+    var (user_slice, found?) = users.udict_get?(267, addr);
+    throw_unless(404, found?);
+    
+    return (
+        user_slice~load_bits(), ;; name
+        user_slice~load_bits(), ;; email
+        user_slice~load_bits(), ;; password_hash
+        user_slice~load_bits(), ;; role
+        user_slice~load_uint(1)  ;; is_registered
+    );
+}
+
+() register(slice name, slice email, slice password_hash, slice role) impure {
+    var (owner_address, users) = load_data();
+    var sender_addr = my_address();
+    
+    ;; Check if user already exists
+    var (_, found?) = users.udict_get?(267, sender_addr);
+    throw_if(400, found?);
+    
+    ;; Create new user entry
+    var user_data = begin_cell()
+        .store_slice(name)
+        .store_slice(email)
+        .store_slice(password_hash)
+        .store_slice(role)
+        .store_uint(1, 1)
+    .end_cell();
+    
+    users~udict_set(267, sender_addr, user_data.begin_parse());
+    set_data(begin_cell()
+        .store_slice(owner_address)
+        .store_dict(users)
+    .end_cell());
+}
+
+int login(slice password_hash) method_id {
+    var sender_addr = my_address();
+    var (name, email, stored_hash, role, is_registered) = load_user(sender_addr);
+    
+    ;; Check password
+    return equal_slices(stored_hash, password_hash);
+}
+
+slice get_user_role() method_id {
+    var sender_addr = my_address();
+    var (_, _, _, role, is_registered) = load_user(sender_addr);
+    return role;
+} 
